@@ -1,24 +1,17 @@
-# Ex 1
+# Ex 1a
 
 my_list = ['H', 'P', 'E', 'E', 'L', 'T', 'L', 'E', 'O', 'R']
 
-hello = 'HELLO'
-peter = 'PETER'
+my_dict = {i: char for i, char in enumerate(my_list)}
 
-idx_list_in_hello = []
-idx_list_for_hello_in_my_list = []
-for idx, i in enumerate(my_list):
-    if i in hello:
-        idx_list_in_hello.append(hello.index(i))
-        idx_list_for_hello_in_my_list.append(my_list.index(i))
+hello_idxs = [my_list.index(char) for char in 'HELLO']
 
-idx_set_in_hello = set(idx_list_in_hello)
-idx_list_in_hello = list(idx_set_in_hello)
-idx_list_in_hello = idx_list_in_hello.sort()
+peter_idxs = [my_list.index(char) for char in 'PETER']
 
-idx_set_for_hello_in_my_list = set(idx_list_for_hello_in_my_list)
-idx_list_for_hello_in_my_list = list(idx_set_for_hello_in_my_list)
-idx_list_for_hello_in_my_list = idx_list_for_hello_in_my_list.sort()
+hello = [my_list[i] for i in hello_idxs]
 
-print(f"{idx_list_in_hello = }")
-print(f"{idx_list_for_hello_in_my_list = }")
+peter = [my_list[i] for i in peter_idxs]
+    
+print(my_dict)
+print(hello)
+print(peter)
