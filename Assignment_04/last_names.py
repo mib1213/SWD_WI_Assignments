@@ -1,6 +1,6 @@
 # Ex 3a
 
-customers = [
+customers: list[list[str]] = [
 ["Max", "Mustermann", "01.01.83"],
 ["Martina", "Musterfrau", "02.02.84"],
 ["Gabi", "Meier", "03.03.85"]
