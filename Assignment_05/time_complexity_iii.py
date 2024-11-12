@@ -23,14 +23,15 @@ def main() -> None:
     # using the function 'time_it' generate time for each case and add it to a list
     list_times: list[float] = []
     set_times: list[float] = []
-    for i in range(4):
-        list_times.append(time_it(population, list_of_lists[i], 1000))
-        set_times.append(time_it(population, list_of_sets[0], 1000))
+
+    for lst, st in zip(list_of_lists, list_of_sets):
+        list_times.append(time_it(population, lst, 1000))
+        set_times.append(time_it(population, st, 1000))
 
     # print the times in the list
-    for i in range(1, 5):
-        print(f"list_{i} took {list_times[0]:.5f} seconds")
-        print(f"set_{i} took {set_times[0]:.5f} seconds")
+    for i, (list_time, set_time) in enumerate(zip(list_times, set_times), 1):
+        print(f"list_{i} took {list_time:.5f} seconds")
+        print(f"set_{i} took {set_time:.5f} seconds")
     
     return
 

@@ -1,13 +1,13 @@
-The results on time_complexity_iii.py look something like this:
+The results on time_complexity_iii.py on a random execution look something like this:
 
-list_1 took 0.06315 seconds
-set_1 took 0.00037 seconds
-list_2 took 0.06315 seconds
-set_2 took 0.00037 seconds
-list_3 took 0.06315 seconds
-set_3 took 0.00037 seconds
-list_4 took 0.06315 seconds
-set_4 took 0.00037 seconds
+list_1 took 0.06279 seconds
+set_1 took 0.00040 seconds
+list_2 took 0.63702 seconds
+set_2 took 0.00069 seconds
+list_3 took 3.74154 seconds
+set_3 took 0.00102 seconds
+list_4 took 7.35889 seconds
+set_4 took 0.00066 seconds
 
 This shows that the exact same search operation on the exact same size set is atleast 200 times 
 faster as compared to the same search operation on the exact same size list.
