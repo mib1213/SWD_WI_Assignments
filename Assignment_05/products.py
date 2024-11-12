@@ -1,3 +1,5 @@
+# Aufgabe 2
+
 parts: list[tuple[int|str]] = [
     (1, '500-1', 'Hammer', 2, 'Pieces'),
     (2, '503', 'Screwdriver', 3, 'Pieces'),
