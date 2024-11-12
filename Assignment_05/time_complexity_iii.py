@@ -41,11 +41,11 @@ def time_it(population: range, sample: list[int] | set[int], repeat: int) -> flo
     The function times the search of a random integer from a specified population in a 
     given sample specified number of times and then return the time taken as float in seconds
     """
-    t1: float = time.time()
+    t1: float = time.perf_counter()
     for _ in range(repeat):
         if (random_number := random.randrange(population)) in sample:
             print(f"{random_number} found")
-    t2: float = time.time()
+    t2: float = time.perf_counter()
     return t2 - t1
 
 if __name__ == '__main__':

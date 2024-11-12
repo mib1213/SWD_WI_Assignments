@@ -15,7 +15,7 @@ random_list: list[int] = random.sample(range(population), k=100)
 random_set: set[int] = set(random.sample(range(population), k=100))
 
 # time the for loop operation on the list
-list_time_start: float = time.time()
+list_time_start: float = time.perf_counter()
 # check for each number in random_list if this number is same as the random_number generated above
 for number in random_list: 
     if number == random_number:
@@ -24,18 +24,18 @@ for number in random_list:
 # else block will only run if break has not ran already, meaning if the number has not been found
 else:
     print("Not Found")
-list_time_end: float = time.time()
+list_time_end: float = time.perf_counter()
 total_list_time: float = list_time_end - list_time_start
 
 # same logic as list but on set
-set_time_start: float = time.time()
+set_time_start: float = time.perf_counter()
 for number in random_set:
     if number == random_number:
         print("Found")
         break
 else:
     print("Not Found")
-set_time_end: float = time.time()
+set_time_end: float = time.perf_counter()
 total_set_time: float = set_time_end - set_time_start
 
 print(f"{total_list_time = }")
