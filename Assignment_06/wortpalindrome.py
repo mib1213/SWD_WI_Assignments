@@ -6,6 +6,8 @@ def main() -> None:
         print("Es ist kein Palindrome")
     return
 
+# diese Funktion vergleicht einen Str mit seiner Umkehrung und falls sie gleich sind, wird True 
+# zurückgegeben.
 def ist_palindrome(wort: str) -> bool:
     wort = wort.lower()
     return wort == wort[::-1]
