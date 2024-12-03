@@ -1,3 +1,5 @@
+# Aufgabe 3b
+
 def main() -> None:
     eingabe: str = input("Satz: ")
     wort_ohne_sonderzeichen: str = lösche_sonderzeichen(eingabe)

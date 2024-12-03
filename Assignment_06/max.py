@@ -1,3 +1,5 @@
+# Aufgabe 2
+
 # für die Max Funktion im Allgemeinen habe ich mir überlegt, ob sie im Fall, wenn alle Zahlen gleich 
 # sind, None zurückgeben soll, aber diese Vorgehensweise macht das Program einfach zu lang, deswegen habe 
 # ich hier so gemacht, dass falls alle Zahlen gleich sind, wird die Funktion einfach die Zahl zurückgibt,

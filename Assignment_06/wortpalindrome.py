@@ -1,3 +1,5 @@
+# Aufgabe 3a
+
 def main() -> None:
     eingabe: str = input("Wort: ")
     if ist_palindrome(eingabe):
