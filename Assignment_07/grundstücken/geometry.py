@@ -1,4 +1,10 @@
-# Aufgabe 1
+# Aufgabe 1a
+
+from preise import netto_preis_berechnen, brutto_preis_berechnen
+from fläche import fläche_berechnen
+
+# ich habe angenommen, dass die Werte von Grundstücke sowie die Preise die beide Datentypen "int" 
+# und "float" haben können
 
 def main() -> None:
     # Beispiel Liste für 3 Grundstücke als 3 Tuple mit jeweils ihrer (Länge, Breite) 
@@ -10,27 +16,13 @@ def main() -> None:
 
     for fläche in flächen:
         # ein Tupel von (nettopreis, bruttopres) als Rückgabewert von der Funktion 'preise_berechnen'
-        nettopreis: int | float 
-        bruttopreis: float
-        nettopreis, bruttopreis = preise_berechnen(fläche, 1, 0.1)
+        nettopreis: int | float = netto_preis_berechnen(fläche, 1)
+        bruttopreis: float = brutto_preis_berechnen(nettopreis, 0.1)
 
+        # interessenterweise würde die Floatextension ":.0f" sogar mit "int" Typ funktionieren und man
+        # wird keine Fehlermeldung bekommen, falls die Variablen "int" Typ sind.
         print(f"Fläche = {fläche:.0f}; Nettopreis = {nettopreis:.0f}; Bruttopreis = {bruttopreis:.0f}")
     return
-
-def fläche_berechnen(länge: int | float, breite: int | float) -> int | float:
-    """
-    Eine Funktion, um die Fläche von der Länge und Breite zu berechnen.
-    """
-    return länge*breite
-
-def preise_berechnen(fläche: int | float, preis: int | float = 50, steuer: float = 0.035) -> tuple[int | float]:
-    """
-    Eine Funktion, um den Netto- und Bruttopreis auf der Basis von Grundpreis, Steuer und Fläche 
-    zu berechnen.
-    """
-    nettopreis: int | float = fläche*preis
-    bruttopreis: float = nettopreis * (1 + steuer)
-    return nettopreis, bruttopreis
 
 if __name__ == '__main__':
     main()
