@@ -1,6 +1,9 @@
 # Aufgabe 2
 
 import tkinter as tk
+
+# aus irgendeinem Grund muss man die 'messagebox' Funktion seperat importieren, 
+# kann man nicht tk.messagebox verwenden
 from tkinter import messagebox
 from functools import partial
 
