@@ -1,5 +1,7 @@
 # Aufgabe 1b
 
+# Achtung: Um dieses Programm zu unterbrechen, bitte drücke Ctrl+C
+
 import datetime
 import time
 
@@ -8,6 +10,7 @@ def main() -> None:
     neujahr_2025: datetime.datetime = datetime.datetime(2025, 1, 1)
     oster_2025: datetime.datetime = datetime.datetime(2025, 4, 20)
 
+    # wiederhole die Frage bis der Benutzer die richtige Eingabe macht
     while True:
         try:
             benutzer_eingabe: str = input("h für Heiligabend\nn für Neujahr\no für Oster\n: ").lower()
@@ -29,6 +32,10 @@ def main() -> None:
     return
 
 def print_countdown(enddatum: datetime.datetime, print_str: str) -> None:
+    """
+    Um den Countdown bis zu einem bestimmten Datum auszugeben.
+    """
+    # fange den Fehler ab, wenn der Benutzer Ctrl+C drückt
     try:    
         while datetime.datetime.now() < enddatum:
             print(print_str, enddatum - datetime.datetime.now())
