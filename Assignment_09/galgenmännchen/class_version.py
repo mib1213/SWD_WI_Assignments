@@ -91,12 +91,13 @@ class Galgenmännchen:
     def exit(self):
         self.root.destroy()
 
-    def run(self):
-        self.root.mainloop()
+    @classmethod
+    def run(cls, words, tries):
+        game = Galgenmännchen(words, tries)
+        game.root.mainloop()
 
 if __name__ == '__main__':
-    game = Galgenmännchen(WORDS, TRIES)
-    game.run()
+    Galgenmännchen.run(WORDS, TRIES)
 
 
 
