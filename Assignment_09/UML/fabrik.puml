@@ -1,0 +1,70 @@
+@startuml
+
+!theme toy
+
+skinparam ArrowFontSize 20
+skinparam ArrowFontColor Green
+
+title UML Diagramm
+
+class Fabrik {
+}
+
+note right of Fabrik
+Ein Gebäude muss genau eine Fabrik haben.
+end note
+
+abstract class Gebäude {
+    +bezeichnung: str
+}
+
+note right of Gebäude
+Ein Fabrik kann ein oder mehrere Gebäude 
+haben und sie können eigenständig existieren.
+end note 
+
+class BüroGebäude extends Gebäude {
+}
+
+class Lagerhalle extends Gebäude {
+}
+
+class Produktionshalle extends Gebäude {
+}
+
+abstract class Inventargegenstand {
+    +name: str
+}
+
+class Möbelstück extends Inventargegenstand {
+}
+
+class Maschine extends Inventargegenstand {
+}
+
+class Material extends Inventargegenstand {
+}
+
+class Roboter extends Inventargegenstand {
+}
+
+
+class Mitarbeiter {
+    +name: str
+    +geburtsdatum: Date
+    +qualifikation: str
+}
+
+note bottom of Mitarbeiter
+Ein Mitarbeiter hat genau ein Gebäude aber
+ein Gebäude kann keine oder mehrere Mitarbeiter
+haben und die Mitarbeiter existieren sogar
+wenn das Gebäude nicht existieren würde.
+end note
+
+Fabrik "1" o-- "1..*" Gebäude : Aggregation
+Gebäude "1" o-- "0..*" Inventargegenstand : Aggregation
+Gebäude "1" o-- "0..*" Mitarbeiter : Aggregation
+
+
+@enduml
