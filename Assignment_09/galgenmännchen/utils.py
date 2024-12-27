@@ -3,6 +3,24 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog
 from check_char import check_char
 
+"""
+I have written the same program once as OOP and once as functional/sequential Programming,
+at first I had written as sequential, but because of the necessary use of global keywords,
+which I personally don't prefer, I wondered if it would be a good example to use OOP as 
+compared to the common sequential programming in Python, so I end up writing the code in both.
+Honestly speaking, comparing these two, I wouldn't say OOP is much better, since the logic and
+program is exactly the same, except in OOP approch, one has more freedom of sequence and in
+sequential programming you always have to remember that you are using the global keywords. I
+could imagine once the program gets more complex, it would get very messy with sequential
+programming to manage.
+"""
+
+"""
+I am only going to explain the functionality in the sequential programming version (below),
+since the class version is just the, well, class version of that program with exactly same
+logic and functionality. 
+"""
+
 # class version
 
 class Galgenmännchen:
@@ -72,17 +90,19 @@ class Galgenmännchen:
             messagebox.showinfo("Ergebnis", f"Du hast gewonnen. Das Wort war {self.word}")
         else:
             messagebox.showinfo("Ergebnis", f"Du hast verloren. Das Wort war {self.word}")
-        self.new_game()
-
-    def new_game(self):
-        if messagebox.askyesno("Neues Spiel", "Willst du ein neues Spiel beginnnen?"):
-            self.refresh_vars()
-            self.update_ui()
+        
+        if messagebox.askyesno("Neues Spiel", "Willst du ein neues Spiel beginnnen?"): 
+            self.new_game()
         else:
             self.exit()
+
+    def new_game(self):
+            self.refresh_vars()
+            self.update_ui()
     
     def exit(self):
-        self.root.destroy()
+        if messagebox.askyesno("Beenden", "Willst du das Programm beenden?"):
+            self.root.destroy()
 
     @classmethod
     def run(cls, words, tries):
@@ -91,8 +111,13 @@ class Galgenmännchen:
 
 # sequential version
 
-def run_galgenmännchen(_words, _tries):
+def run_galgenmännchen(_words: str, _tries: int) -> None:
+    # _words, _tries to differentiate from the local words, tries
     def choose_word(words, tries):
+        """
+        Here I am just making sure that we don't have less number of tries than the chars 
+        in a word, because if that's the case, then the game is not possible to win.
+        """
         while True:
             random_choice = random.choice(words)
             if len(random_choice) < tries:
@@ -100,6 +125,9 @@ def run_galgenmännchen(_words, _tries):
         return random_choice
 
     def refresh_vars():
+        """
+        Setting up variable to their default values.
+        """
         global word, tries, chars, solution
         word = choose_word(_words, _tries)
         chars = []
@@ -108,6 +136,7 @@ def run_galgenmännchen(_words, _tries):
 
     refresh_vars()
 
+    # defining the initial structure of the GUI
     root = tk.Tk()
     root.geometry("400x200")
     root.title("Galgenmännchen")
@@ -120,6 +149,8 @@ def run_galgenmännchen(_words, _tries):
     solution_label = tk.Label(root, text=solution)
     solution_label.pack()
 
+    # making sure we get the input as a single character and it must be a letter of 
+    # the alphabets, otherwise keep prompting the user for the correct input
     def get_input():
         while True:
             try:
@@ -132,27 +163,35 @@ def run_galgenmännchen(_words, _tries):
             except ValueError as ve:
                 messagebox.showerror("Fehlermeldung", ve)
 
+    # updating the labels with new solution and number of tries
     def update_ui():
         solution_label.config(text=solution)
         tries_label.config(text=tries)
 
+    # exit the program but take a confirmation before
     def exit():
-        root.destroy()
+        if messagebox.askyesno("Beenden", "Willst du das Programm beenden?"):
+            root.destroy()
 
     def new_game():
-        if messagebox.askyesno("Neues Spiel", "Willst du ein neues Spiel beginnen?"):
             refresh_vars()
             update_ui()
-        else:
-            exit()
-
+    
     def end_game():
         if word == solution:
             messagebox.showinfo("Ergebnis", f"Du hast gewonnen. Das Wort war {word}")
         else:
             messagebox.showinfo("Ergebnis", f"Du hast verloren. Das Wort war {word}")
-        new_game()
 
+        # ask if the user wants to play a new game, if yes then call new_game(),
+        # if not then call exit() 
+        if messagebox.askyesno("Neues Spiel", "Willst du ein neues Spiel beginnen?"):
+            new_game()
+        else:
+            exit()
+
+    # update all the global variables as soon as the button is clicked and this function
+    # is called
     def get_char():
         global word, tries, chars, solution
         char = get_input()
