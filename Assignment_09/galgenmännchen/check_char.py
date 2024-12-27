@@ -1,6 +1,6 @@
 # Aufgabe 2
 
-def check_char(word, chars):
+def check_char(word: str, chars: list[str]) -> str:
     solution = [' _ '] * len(word)
     for char in chars:
         if char in word:

@@ -2,6 +2,7 @@ import random
 import tkinter as tk
 from tkinter import messagebox, simpledialog
 from parameters import WORDS, TRIES
+from check_char import check_char
 
 class Galgenmännchen:
     def __init__(self, words, tries):
@@ -44,7 +45,7 @@ class Galgenmännchen:
     def get_char(self):
         self.char = self.get_input()
         self.chars.append(self.char)
-        self.solution = self.check_char()
+        self.solution = check_char(self.word, self.chars)
         self.tries -= 1
         self.update_ui()
         if self.tries == 0 or self.solution == self.word:
@@ -60,15 +61,6 @@ class Galgenmännchen:
                 return char
             except ValueError as ve:
                 messagebox.showerror("Fehlermeldung", ve)
-
-    def check_char(self):
-        solution = [' _ '] * len(self.word)
-        for char in self.chars:
-            if char in self.word:
-                idxs = [idx for idx, char_ in enumerate(self.word) if char_ == char]
-                for idx in idxs:
-                    solution[idx] = char
-        return ''.join(solution)
 
     def update_ui(self):
         self.solution_label.config(text=self.solution)
