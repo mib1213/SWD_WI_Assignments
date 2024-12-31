@@ -11,7 +11,7 @@ Ein `Gebaude` existiert *"unabhägig"* von der `Fabrik` (Aggregation) <br>
 <i>
 Die Raute darf nur bei der Klasse sein, die die andere Klasse <b>"besitzt"</b>.
 </i>
-
+<br>
 <i>
 Die Beziehung (Aggregation/Komposition) ist nur relevant für die Klasse, die aus der anderen Klasse besteht <b>(zugehört)</b>. Im Beispiel von `Gebäude` und `Fabrik` fragt man, ob ein `Gebäude` existentiell von der `Fabrik` abhängig ist, wenn die `Fabrik` das `Gebäude` <b>"besitzt"</b>.
 </i>
