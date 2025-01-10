@@ -1,1 +1,1 @@
-- no programming assignments
+- no coding tasks
